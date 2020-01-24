@@ -36,9 +36,10 @@ const Home = () => {
         Design a comment list component that automatically appends new messages as they arrive. Allow the user to choose
         whether or not to automatically “follow” as new messages arrive.
       </Typography>
+      <Typography variant="body1">Use this provided <a href="https://github.com/themaven-net/web-kokanee-[candidate]">nextjs repo</a> for your work.</Typography>
       <Typography gutterBottom variant="body1">
-        You are permitted to ask questions to your Maven Teammate. You are also permitted to submit a PR for the work
-        and take feedback from the PR.
+        You are permitted to ask questions to [team mate], your Maven Teammate. You are also permitted to submit a PR for the work
+        and take feedback from the PR. Your teammate's github username is [teammate github username]
       </Typography>
       <Typography gutterBottom variant="body1">
         Typescript is preferred, but JavaScript is acceptable.
