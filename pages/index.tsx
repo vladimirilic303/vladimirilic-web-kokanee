@@ -32,12 +32,12 @@ const Home = () => {
       <Typography gutterBottom variant="h2">
         Kokanee Exploratory Project
       </Typography>
+      <Typography gutterBottom variant="h3">
+        Welcome [candidate's name]!
+      </Typography>
       <Typography gutterBottom variant="body1">
         Design a comment list component that automatically appends new messages as they arrive. Allow the user to choose
         whether or not to automatically “follow” as new messages arrive.
-      </Typography>
-      <Typography gutterBottom variant="h3">
-        Welcome [candidate's name]!
       </Typography>
       <Typography variant="body1">
         Use this provided <a href="https://github.com/themaven-net/web-kokanee-[candidate]">nextjs repo</a> for your
