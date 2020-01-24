@@ -44,9 +44,10 @@ const Home = () => {
         work.
       </Typography>
       <Typography gutterBottom variant="body1">
-        Please connect with [maven teammate], your Maven Teammate. You are also invited, but not obligated, to submit a
-        PR for the work and take feedback from the PR. Your teammate's github username is{' '}
-        <code>[teammate github username]</code> and [teammate gender possessive] email is{' '}
+        Please connect with [maven teammate], your Maven Teammate. Please treat this relationship as you would a normal
+        colleague. If you have any questions about the code base, feel free to ask for an orientation. You are also
+        invited, but not obligated, to submit a PR for the work and take feedback from the PR. Your teammate's github
+        username is <code>[teammate github username]</code> and [teammate gender possessive] email is{' '}
         <code>[teammmate email]@maven.io</code>
       </Typography>
       <Typography gutterBottom variant="body1">
@@ -63,13 +64,13 @@ const Home = () => {
       </Typography>
       <p>
         Have a look around the project and see if anything is helpful. be sure and take a look at models/Comment.ts and
-        components/CommentList.tsx
+        components/CommentList.tsx. (There is also a javascript version of the CommentList component, in
+        components/ComponentListJS.jsx, if you prefer.)
       </p>
       <p>
         If you want to do something like create a new page route, the{' '}
         <a href="https://nextjs.org/docs/basic-features/pages">nextjs docs</a> are quite useful.{' '}
       </p>
-
       <CommentList initialComments={makeComments(10)} />
     </div>
   )
