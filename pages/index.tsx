@@ -72,6 +72,10 @@ const Home = () => {
         <a href="https://nextjs.org/docs/basic-features/pages">nextjs docs</a> are quite useful.{' '}
       </p>
       <CommentList initialComments={makeComments(10)} />
+      <p>
+        Extra credit 1: ensure the CommentList can load a large number (~ 10,000) of comments.
+        Extra credit 2: Ensure there are no duplicate messages in the stream.
+      </p>
     </div>
   )
 }
