@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Theme, Typography, Button, ListItem, List, ListItemText} from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
 import CommentList from '../components/CommentList'
 import {makeComments} from '../models/Comment'
+
+const numOfInitialComments = 10
 
 const useStyles = makeStyles((theme: Theme) => {
   return {
@@ -22,7 +24,6 @@ const useStyles = makeStyles((theme: Theme) => {
 
 const Home = () => {
   const classes = useStyles()
-  const [numComments, setNumComments] = useState(10)
   return (
     <div className={classes.root}>
       <img
@@ -78,9 +79,7 @@ const Home = () => {
         If you want to do something like create a new page route, the{' '}
         <a href="https://nextjs.org/docs/basic-features/pages">nextjs docs</a> are quite useful.{' '}
       </p>
-      <Button onClick={() => setNumComments(10)}>Seed with 10 commments</Button>
-      <Button onClick={() => setNumComments(10000)}>Seed with 10000 commments</Button>
-      <CommentList initialComments={makeComments(numComments)}/>
+      <CommentList initialComments={makeComments(numOfInitialComments)}/>
       <List>
         <ListItem>
           <ListItemText>
