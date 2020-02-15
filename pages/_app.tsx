@@ -4,6 +4,7 @@ import Head from 'next/head'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/styles'
 import theme from '../src/theme'
+import { comments$, CommentContext } from '../observables/comments'
 
 export default class MyApp extends App {
   public componentDidMount() {
@@ -22,11 +23,13 @@ export default class MyApp extends App {
         <Head>
           <title>Kokanee</title>
         </Head>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <CommentContext.Provider value={{comments$}}>
+          <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </CommentContext.Provider>
       </React.Fragment>
     )
   }

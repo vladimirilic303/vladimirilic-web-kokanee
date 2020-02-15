@@ -10,34 +10,24 @@ export interface Comment {
 
 let nextId = 1
 
-const makeComment = (): Comment => ({
-  id: nextId++,
-  author: name(),
-  message: loremIpsum({ count: ~~(Math.random() * 3) }),
-  time: new Date()
-})
-
-export const makeComments = (count: number) => {
-  const comments = []
-  for (let i = 0; i < count; i++) {
-    comments.push(makeComment())
-  }
-  return comments
-}
-
 let lastComment: Comment
 
-const makeDupe = () => Math.random() < 0.1 && lastComment
-
-export const subscribe = (callback: (comment: Comment) => void) => {
-  const interval = Math.random() * 1000 + 2000
-  console.log(`subscribing for next message, will arrive in ${interval.toFixed(0)} ms`)
-  const produce = () => {
-    // every once in a while we send a dupe message
-    if (!makeDupe()) {
-      lastComment = makeComment()
-    }
-    callback(lastComment)
+export const makeComment = (): Comment => {
+  if (Math.random() < 0.5 && lastComment) {
+    return lastComment
   }
-  setTimeout(produce, interval)
+  let comment = {
+    id: nextId++,
+    author: name(),
+    message: loremIpsum({ count: ~~(Math.random() * 3) }),
+    time: new Date()
+  }
+  lastComment = comment
+  return comment
+}
+
+
+export const makeComments = (count: number) => {
+  const comments = new Array(count)
+  return comments.map(makeComment)
 }
