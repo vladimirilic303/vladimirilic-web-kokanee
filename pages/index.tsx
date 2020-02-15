@@ -1,8 +1,8 @@
-import React from 'react'
-import { Theme, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import React, {useState} from 'react'
+import {Theme, Typography, Button, ListItem, List, ListItemText} from '@material-ui/core'
+import {makeStyles} from '@material-ui/core/styles'
 import CommentList from '../components/CommentList'
-import { makeComments } from '../models/Comment'
+import {makeComments} from '../models/Comment'
 
 const useStyles = makeStyles((theme: Theme) => {
   return {
@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) => {
 
 const Home = () => {
   const classes = useStyles()
+  const [numComments, setNumComments] = useState(10)
   return (
     <div className={classes.root}>
       <img
@@ -38,6 +39,12 @@ const Home = () => {
       <Typography gutterBottom variant="body1">
         Design a comment list component that automatically appends new messages as they arrive. Allow the user to choose
         whether or not to automatically “follow” as new messages arrive.
+      </Typography>
+      <Typography gutterBottom variant="body2">
+        <strong>what does follow mean?</strong> Messages should always be appended to the UI as they arrive. When the
+        user is following, the UI should ensure that the newest message is always in the viewport. When the user is not
+        following, the messages should append into the UI, but avoid automatically scrolling the viewport, to allow a
+        user to read without interruption.
       </Typography>
       <Typography variant="body1">
         Use this provided <a href="https://github.com/themaven-net/web-kokanee-[candidate]">nextjs repo</a> for your
@@ -71,11 +78,21 @@ const Home = () => {
         If you want to do something like create a new page route, the{' '}
         <a href="https://nextjs.org/docs/basic-features/pages">nextjs docs</a> are quite useful.{' '}
       </p>
-      <CommentList initialComments={makeComments(10)} />
-      <p>
-        Extra credit 1: ensure the CommentList can load a large number (~ 10,000) of comments.
-        Extra credit 2: Ensure there are no duplicate messages in the stream.
-      </p>
+      <Button onClick={() => setNumComments(10)}>Seed with 10 commments</Button>
+      <Button onClick={() => setNumComments(10000)}>Seed with 10000 commments</Button>
+      <CommentList initialComments={makeComments(numComments)}/>
+      <List>
+        <ListItem>
+          <ListItemText>
+              Extra credit 1: ensure the CommentList can load a large number (~ 10,000) of comments.
+          </ListItemText>
+        </ListItem>
+        <ListItem>
+            <ListItemText>
+                Extra credit 2: Ensure there are no duplicate messages in the stream.
+            </ListItemText>
+        </ListItem>
+      </List>
     </div>
   )
 }
