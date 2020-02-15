@@ -1,4 +1,4 @@
-import { Comment, subscribe } from '../models/Comment'
+import {Comment, produceComments, subscribe} from '../models/Comment'
 import React, { useEffect, useState } from 'react'
 import { Subject } from 'rxjs'
 import { Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core'
@@ -14,6 +14,7 @@ const CommentList: React.FC<CommentListProps> = props => {
 
   useEffect(() => {
     props.comments.pipe(scan<Comment, Comment[]>((a, c) => [...a, c], [])).subscribe(setComments)
+    produceComments(props.comments, 10)
   }, [])
 
   return (

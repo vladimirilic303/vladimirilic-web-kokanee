@@ -2,7 +2,7 @@ import React from 'react'
 import { Theme, Typography, Button, ListItem, List, ListItemText } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import CommentList from '../components/CommentList'
-import {makeComments, setupSubject} from '../models/Comment'
+import {setupSubject} from '../models/Comment'
 
 const numOfInitialComments = 10
 

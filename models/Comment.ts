@@ -13,7 +13,6 @@ let nextId = 1
 
 export const setupSubject = () => {
   const subject = new Subject<Comment>()
-  range(0, 10).subscribe(() => subject.next(makeComment()))
   subscribe(c => {
     subject.next(c)
   })
@@ -31,12 +30,8 @@ const makeComment = (): Comment => {
   return comment
 }
 
-export const makeComments = (count: number) => {
-  const comments = []
-  for (let i = 0; i < count; i++) {
-    comments.push(makeComment())
-  }
-  return comments
+export const produceComments = (comments: Subject<Comment>, count: number) => {
+  range(0, 10).subscribe(() => comments.next(makeComment()))
 }
 
 let lastComment: Comment
