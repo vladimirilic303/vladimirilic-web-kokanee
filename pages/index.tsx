@@ -1,10 +1,12 @@
 import React from 'react'
-import {Theme, Typography, Button, ListItem, List, ListItemText} from '@material-ui/core'
-import {makeStyles} from '@material-ui/core/styles'
+import { Theme, Typography, Button, ListItem, List, ListItemText } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import CommentList from '../components/CommentList'
-import {makeComments} from '../models/Comment'
+import {makeComments, setupSubject} from '../models/Comment'
 
 const numOfInitialComments = 10
+
+const commentsSubject = setupSubject()
 
 const useStyles = makeStyles((theme: Theme) => {
   return {
@@ -79,17 +81,15 @@ const Home = () => {
         If you want to do something like create a new page route, the{' '}
         <a href="https://nextjs.org/docs/basic-features/pages">nextjs docs</a> are quite useful.{' '}
       </p>
-      <CommentList initialComments={makeComments(numOfInitialComments)}/>
+      <CommentList comments={commentsSubject} />
       <List>
         <ListItem>
           <ListItemText>
-              Extra credit 1: ensure the CommentList can load a large number (~ 10,000) of comments.
+            Extra credit 1: ensure the CommentList can load a large number (~ 10,000) of comments.
           </ListItemText>
         </ListItem>
         <ListItem>
-            <ListItemText>
-                Extra credit 2: Ensure there are no duplicate messages in the stream.
-            </ListItemText>
+          <ListItemText>Extra credit 2: Ensure there are no duplicate messages in the stream.</ListItemText>
         </ListItem>
       </List>
     </div>

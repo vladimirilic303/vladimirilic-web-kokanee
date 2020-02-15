@@ -1,8 +1,9 @@
 import { loremIpsum } from 'lorem-ipsum'
 import { name } from './names'
+import {range, Subject} from 'rxjs'
 
 export interface Comment {
-  id: number,
+  id: number
   author: string
   message: string
   time: Date
@@ -10,12 +11,25 @@ export interface Comment {
 
 let nextId = 1
 
-const makeComment = (): Comment => ({
-  id: nextId++,
-  author: name(),
-  message: loremIpsum({ count: ~~(Math.random() * 3) }),
-  time: new Date()
-})
+export const setupSubject = () => {
+  const subject = new Subject<Comment>()
+  range(0, 10).subscribe(() => subject.next(makeComment()))
+  subscribe(c => {
+    subject.next(c)
+  })
+  return subject
+}
+
+const makeComment = (): Comment => {
+  const comment = {
+    id: nextId++,
+    author: name(),
+    message: loremIpsum({count: ~~(Math.random() * 3)}),
+    time: new Date()
+  }
+  console.log('making comment', comment)
+  return comment
+}
 
 export const makeComments = (count: number) => {
   const comments = []
@@ -38,6 +52,7 @@ export const subscribe = (callback: (comment: Comment) => void) => {
       lastComment = makeComment()
     }
     callback(lastComment)
+    subscribe(callback)
   }
   setTimeout(produce, interval)
 }

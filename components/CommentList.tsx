@@ -1,23 +1,35 @@
 import { Comment, subscribe } from '../models/Comment'
-import {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
+import { Subject } from 'rxjs'
+import { Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core'
+import { Person } from '@material-ui/icons'
+import { scan } from 'rxjs/operators'
 
 export interface CommentListProps {
-  initialComments: Comment[]
+  comments: Subject<Comment>
 }
 
 const CommentList: React.FC<CommentListProps> = props => {
-  const [count, setCount] = useState(props.initialComments.length)
-  useEffect(() => {
-    subscribe(comment => {
-      console.log('received comment: ', comment)
-      setCount(count + 1)
-    })
-  }, [count])
+  const [comments, setComments] = useState<Comment[]>([])
 
-  return <div>
-    [YOU CAN PUT COMMENT LIST COMPONENT HERE, OR ANYWHERE YOU WANT REALLY!]
-    there are {count} comments so far.
-  </div>
+  useEffect(() => {
+    props.comments.pipe(scan<Comment, Comment[]>((a, c) => [...a, c], [])).subscribe(setComments)
+  }, [])
+
+  return (
+    <List>
+      {comments.map(c => (
+        <ListItem key={c.id}>
+          <ListItemAvatar>
+            <Avatar>
+              <Person />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary={c.message} secondary={`${c.author}, ${c.time}`} />
+        </ListItem>
+      ))}
+    </List>
+  )
 }
 
 export default CommentList
