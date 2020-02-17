@@ -20,7 +20,7 @@ export const commentsSubscribeEffect: (callback: (comment: Comment) => any) => v
 
 // Or we could abstract this a step further
 //export const subscribeEffect: <T>(observable: Observable<T>) => (callback: (value: T) => any) => void =
-//(callback) =>
+//(observable) => (callback) =>
   //React.useEffect(() => {
     //let unsubscribe = observable.subscribe(callback)
     //return unsubscribe.unsubscribe.bind(unsubscribe)
