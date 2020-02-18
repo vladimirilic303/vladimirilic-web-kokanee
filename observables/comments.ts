@@ -14,8 +14,8 @@ export const comments$FromContext = React.useContext(CommentContext)
 export const commentsSubscribeEffect: (callback: (comment: Comment) => any) => void =
 (callback) =>
   React.useEffect(() => {
-    let unsubscribe = comments$.subscribe(callback)
-    return unsubscribe.unsubscribe.bind(unsubscribe)
+    let subscription = comments$.subscribe(callback)
+    return subscription.unsubscribe.bind(subscription)
   })
 
 // Or we could abstract this a step further
