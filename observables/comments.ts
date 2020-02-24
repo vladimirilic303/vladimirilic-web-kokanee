@@ -11,3 +11,11 @@ export const comments$: Observable<Comment> = interval(1000).pipe(
 
 export const CommentContext = React.createContext({comments$})
 export const useComments$ = () => React.useContext(CommentContext)
+export const useComments$Subscribe: (callback: (comment: Comment) => any) => void =
+  (callback) => {
+    React.useEffect(() => {
+      let subscription = comments$.subscribe(callback)
+      return () => subscription.unsubscribe()
+    })
+    return comments$
+  }
