@@ -17,5 +17,4 @@ export const useComments$Subscribe: (callback: (comment: Comment) => any) => voi
       let subscription = comments$.subscribe(callback)
       return () => subscription.unsubscribe()
     })
-    return comments$
   }
