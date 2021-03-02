@@ -1,8 +1,8 @@
 import React from 'react'
-import {Theme, Typography, Button, ListItem, List, ListItemText} from '@material-ui/core'
-import {makeStyles} from '@material-ui/core/styles'
+import { Theme, Typography, Button, ListItem, List, ListItemText } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import CommentList from '../components/CommentList'
-import {makeComments} from '../models/Comment'
+import { makeComments } from '../models/Comment'
 
 const numOfInitialComments = 10
 
@@ -35,7 +35,7 @@ const Home = () => {
         Kokanee Exploratory Project
       </Typography>
       <Typography gutterBottom variant="h3">
-        Welcome [candidate's name]!
+        Welcome!
       </Typography>
       <Typography gutterBottom variant="body1">
         Design a comment list component that automatically appends new messages as they arrive. Allow the user to choose
@@ -47,25 +47,13 @@ const Home = () => {
         following, the messages should append into the UI, but avoid automatically scrolling the viewport, to allow a
         user to read without interruption.
       </Typography>
-      <Typography variant="body1">
-        Use this provided <a href="https://github.com/themaven-net/web-kokanee-[candidate]">nextjs repo</a> for your
-        work.
-      </Typography>
       <Typography gutterBottom variant="body1">
-        Please connect with [maven teammate], your Maven Teammate. Please treat this relationship as you would a normal
-        colleague. If you have any questions about the code base, feel free to ask for an orientation. You are also
-        invited, but not obligated, to submit a PR for the work and take feedback from the PR. Your teammate's github
-        username is <code>[teammate github username]</code> and [teammate gender possessive] email is{' '}
-        <code>[teammmate email]@maven.io</code>
+        Please connect with Hank, your Maven Teammate. Please treat this relationship as you would a normal colleague.
+        If you have any questions about the code base, feel free to ask for an orientation. You are also invited, but
+        not obligated, to submit a PR for the work and take feedback from the PR.
       </Typography>
       <Typography gutterBottom variant="body1">
         Typescript is preferred, but JavaScript is acceptable.
-      </Typography>
-      <Typography gutterBottom variant="body1">
-        You are welcome to design your own UX, if you wish, or we can supply some sample UX.
-      </Typography>
-      <Typography gutterBottom variant="body1">
-        When you are ready to present, reach out to Jimmy and he’ll get a time scheduled for the demo.
       </Typography>
       <Typography gutterBottom variant="body1">
         Good luck!
@@ -79,17 +67,15 @@ const Home = () => {
         If you want to do something like create a new page route, the{' '}
         <a href="https://nextjs.org/docs/basic-features/pages">nextjs docs</a> are quite useful.{' '}
       </p>
-      <CommentList initialComments={makeComments(numOfInitialComments)}/>
+      <CommentList initialComments={makeComments(numOfInitialComments)} />
       <List>
         <ListItem>
           <ListItemText>
-              Extra credit 1: ensure the CommentList can load a large number (~ 10,000) of comments.
+            Extra credit 1: ensure the CommentList can load a large number (~ 10,000) of comments.
           </ListItemText>
         </ListItem>
         <ListItem>
-            <ListItemText>
-                Extra credit 2: Ensure there are no duplicate messages in the stream.
-            </ListItemText>
+          <ListItemText>Extra credit 2: Ensure there are no duplicate messages in the stream.</ListItemText>
         </ListItem>
       </List>
     </div>
