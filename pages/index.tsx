@@ -1,8 +1,10 @@
-import React from 'react'
-import { Theme, Typography, Button, ListItem, List, ListItemText } from '@material-ui/core'
+import React, { useState } from 'react'
+import { Theme, Typography, ListItem, List, ListItemText } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import CommentList from '../components/CommentList'
+import CommentNotification from '../components/CommentNotification'
 import { makeComments } from '../models/Comment'
+import FollowCheckbox from '../components/FollowCheckbox'
 
 const numOfInitialComments = 10
 
@@ -24,6 +26,9 @@ const useStyles = makeStyles((theme: Theme) => {
 
 const Home = () => {
   const classes = useStyles()
+  const [isFollowing, setIsFollowing] = useState(false)
+  const [latestComment, setLatestComment] = useState(null)
+
   return (
     <div className={classes.root}>
       <img
@@ -67,7 +72,10 @@ const Home = () => {
         If you want to do something like create a new page route, the{' '}
         <a href="https://nextjs.org/docs/basic-features/pages">nextjs docs</a> are quite useful.{' '}
       </p>
-      <CommentList initialComments={makeComments(numOfInitialComments)} />
+      {isFollowing && <CommentNotification comment={latestComment} />}
+      <FollowCheckbox checked={isFollowing} onChange={() => setIsFollowing(!isFollowing)} />
+      <CommentList initialComments={makeComments(numOfInitialComments)} setLatestComment={setLatestComment} />
+
       <List>
         <ListItem>
           <ListItemText>

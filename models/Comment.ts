@@ -2,7 +2,7 @@ import { loremIpsum } from 'lorem-ipsum'
 import { name } from './names'
 
 export interface Comment {
-  id: number,
+  id: number
   author: string
   message: string
   time: Date
