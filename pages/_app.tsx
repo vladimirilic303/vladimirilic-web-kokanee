@@ -4,7 +4,7 @@ import Head from 'next/head'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/styles'
 import theme from '../src/theme'
-import '../scss/index.css'
+import '../css/index.css'
 
 export default class MyApp extends App {
   public componentDidMount() {

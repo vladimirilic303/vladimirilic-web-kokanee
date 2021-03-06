@@ -28,7 +28,7 @@ const CommentList: React.FC<CommentListProps> = ({ initialComments, setLatestCom
           <CommentListItem key={comment.id} comment={comment} />
         ))}
       </ul>
-      there are {comments.length} comments so far.
+      <div className="comment_size"> there are {comments.length} comments so far. </div>
     </div>
   )
 }
